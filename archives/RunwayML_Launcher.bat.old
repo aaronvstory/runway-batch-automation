@@ -1,0 +1,32 @@
+@echo off
+REM RunwayML Batch Automation Tool Launcher
+REM This launcher checks for the compiled exe first, then falls back to Python
+
+echo.
+
+REM Check if compiled exe exists
+if exist "distribution\dist\RunwayML_Batch.exe" (
+    echo Starting RunwayML Batch (Compiled Version)...
+    start "" "distribution\dist\RunwayML_Batch.exe"
+    exit /b
+)
+
+REM Check if Python is available
+python --version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo ===============================================================================
+    echo    ERROR: Python is not installed or not in PATH
+    echo ===============================================================================
+    echo.
+    echo Please install Python 3.8 or higher from https://python.org
+    echo Or run the compiled version from distribution\dist\RunwayML_Batch.exe
+    echo.
+    pause
+    exit /b 1
+)
+
+REM Run from source
+echo Starting RunwayML Batch (Python Source)...
+python src\runway_automation_ui.py
+
+pause

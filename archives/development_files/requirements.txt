@@ -1,0 +1,8 @@
+# Core dependencies
+rich>=13.0.0
+requests>=2.28.0
+pillow>=9.0.0
+
+# Optional for video duration detection
+# opencv-python>=4.5.0
+# moviepy>=1.0.3
